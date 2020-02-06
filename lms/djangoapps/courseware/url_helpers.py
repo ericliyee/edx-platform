@@ -57,7 +57,7 @@ def get_redirect_url(course_key, usage_key, request=None):
     redirect_url += "?{}".format(urlencode({'activate_block_id': six.text_type(final_target_id)}))
     return redirect_url
 
-def get_microfrontend_redirect_url(course_key, path):
+def get_microfrontend_redirect_url(course_key, path=None):
   """
     The micro-frontend determines the user's position in the vertical via
     a separate API call, so all we need here is the course_key, section, and vertical
@@ -72,9 +72,12 @@ def get_microfrontend_redirect_url(course_key, path):
 
   redirect_url = '{base_url}/{prefix}/{course_key}'.format(
    base_url=settings.LEARNING_MICROFRONTEND_URL,
-   prefix='course/',
+   prefix='course',
    course_key=course_key
   )
+
+  if path == None:
+    return redirect_url
 
   # The first four elements of the path list are the ones we care about here:
   # - course
