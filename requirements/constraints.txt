@@ -72,7 +72,10 @@ freezegun==0.3.12
 zipp==1.0.0
 
 # jsonfield2 3.1.0 drops support for python 3.5
-jsonfield2==3.0.3
+jsonfield2<3.1.0
 
 # mock version 4.0.0 drops support for python 3.5
 mock<4.0.0
+
+# django-storages version 1.9 drops support for boto storage backend.
+django-storages<1.9
